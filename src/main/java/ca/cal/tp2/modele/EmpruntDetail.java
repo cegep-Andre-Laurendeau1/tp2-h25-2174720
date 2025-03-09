@@ -21,6 +21,9 @@ public class EmpruntDetail {
     @ManyToOne
     private Emprunt emprunt;
 
+    @ManyToOne
+    private Document document;
+
 
 
     public boolean isEnRetard(){
