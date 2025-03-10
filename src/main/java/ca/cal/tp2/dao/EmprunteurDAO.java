@@ -74,8 +74,28 @@ public class EmprunteurDAO implements UtilisateurDAO {
     }
 
     @Override
-    public void addEmprunt(Emprunt emprunt, int emprunteurID) {
-        // Implement the logic to add an Emprunt
+    public void addEmprunt(Emprunt emprunt, Emprunteur emprunteur) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+
+        if (!em.contains(emprunteur)) {
+            emprunteur = em.merge(emprunteur);
+        }
+
+        if(!emprunt.getItems().isEmpty()) {
+
+            for (Document document : emprunt.getItems()) {
+                if (!document.verifieDisponibilite()) {
+                    throw new IllegalArgumentException
+                            ("Le document " + document.getTitre() + " n'est pas disponible.");
+                }
+            }
+        }
+        emprunt.setEmprunteur(emprunteur);
+        em.persist(emprunt);
+
+        em.getTransaction().commit();
+        em.close();
     }
 
     public void addEmprunteur(Emprunteur emprunteur) {

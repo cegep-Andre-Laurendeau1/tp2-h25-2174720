@@ -25,7 +25,7 @@ public abstract class Document {
 
 
     public boolean verifieDisponibilite() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp2");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp2-vincent-lemieux");
         EntityManager em = emf.createEntityManager();
         Query queryCount = em.createQuery("SELECT d FROM Document d WHERE d.titre LIKE :titre");
         queryCount.setParameter("titre", this.titre);

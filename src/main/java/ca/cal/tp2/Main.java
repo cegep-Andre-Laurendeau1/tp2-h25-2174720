@@ -128,6 +128,10 @@ public class Main {
         Prepose preposeEntity = new Prepose("Alice", "alice@example.com", "555-555-5555");
         preposeEntity.entreNouveauDocument(document, preposeService);
 
+        // Test verifieDisponibilite method
+        boolean isAvailable = document.verifieDisponibilite();
+        System.out.println("Document availability: " + isAvailable);
+
         em.close();
         emf.close();
 

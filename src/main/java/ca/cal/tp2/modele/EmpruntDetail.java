@@ -1,14 +1,16 @@
 package ca.cal.tp2.modele;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.Date;
 @Entity
-
+@Getter
+@Setter
+@NoArgsConstructor
 public class EmpruntDetail {
     @Id
     @GeneratedValue

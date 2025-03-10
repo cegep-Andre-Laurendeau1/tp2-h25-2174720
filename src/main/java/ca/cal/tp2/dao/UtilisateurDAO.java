@@ -15,5 +15,5 @@ public interface UtilisateurDAO {
 
     List<CD> findCDByArtist(String artist) throws SQLException;
 
-    void addEmprunt(Emprunt emprunt, int emprunteurID);
+    void addEmprunt(Emprunt emprunt, Emprunteur emprunteur);
 }
